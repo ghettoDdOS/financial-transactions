@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [vue(), basicSsl()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src/client', import.meta.url))
     }
   }
 })
