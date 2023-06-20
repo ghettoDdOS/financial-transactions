@@ -3,8 +3,8 @@ import { toTypedSchema } from '@vee-validate/yup'
 import { useForm } from 'vee-validate'
 import { object, string } from 'yup'
 
-import { messages } from '@/utils/validation'
 import { useAuthStore } from '@/stores/auth'
+import { messages } from '@/utils/validation'
 
 const authStore = useAuthStore()
 

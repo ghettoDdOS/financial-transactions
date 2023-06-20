@@ -18,7 +18,7 @@ const parseSTPayload = (text: string) => {
 </script>
 
 <template>
-  <main>
+  <div>
     <QrScanner @decode="parseSTPayload" />
     <div v-if="stData">
       <div v-for="(value, key) in stData" :key="key">
@@ -26,5 +26,5 @@ const parseSTPayload = (text: string) => {
         <span>{{ value }}</span>
       </div>
     </div>
-  </main>
+  </div>
 </template>
