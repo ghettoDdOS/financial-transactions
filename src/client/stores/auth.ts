@@ -5,9 +5,9 @@ import type {
   UserCreateRequest
 } from '@/models/auth'
 
-import { defineStore } from 'pinia'
 import { useLocalStorage } from '@vueuse/core'
 import jwtDecode from 'jwt-decode'
+import { defineStore } from 'pinia'
 
 import authService from '@/services/auth.service'
 
@@ -50,6 +50,7 @@ export const useAuthStore = defineStore('auth', {
     async register(registrationData: UserCreateRequest) {
       try {
         await authService.userCreate(registrationData)
+        return this.router.push({ name: 'login' })
       } catch (error) {
         console.error(error)
       }

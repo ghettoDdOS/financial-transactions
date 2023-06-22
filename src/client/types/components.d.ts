@@ -8,7 +8,10 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ABtn: typeof import('anu-vue')['ABtn']
+    ADialog: typeof import('anu-vue')['ADialog']
     AInput: typeof import('anu-vue')['AInput']
+    AListItem: typeof import('anu-vue')['AListItem']
+    ASelect: typeof import('anu-vue')['ASelect']
     ATypography: typeof import('anu-vue')['ATypography']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

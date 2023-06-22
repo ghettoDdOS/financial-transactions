@@ -10,7 +10,7 @@ export default defineConfig({
       extraProperties: presetIconExtraProperties
     }),
     presetAttributify(),
-    presetAnu(),
+    presetAnu({ colors: ['secondary'] }),
     presetThemeDefault()
   ],
   content: {

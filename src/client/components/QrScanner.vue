@@ -24,14 +24,23 @@ onMounted(async () => {
     onDecodeError,
     returnDetailedScanResult: true,
     maxScansPerSecond: 10,
-    highlightScanRegion: true,
+    highlightScanRegion: false,
     highlightCodeOutline: true
   })
-  scanner.value.start()
 })
 
 onUnmounted(() => {
   scanner.value?.stop()
+})
+const start = () => {
+  scanner.value?.start()
+}
+const stop = () => {
+  scanner.value?.stop()
+}
+defineExpose({
+  start,
+  stop
 })
 </script>
 

@@ -9,3 +9,20 @@ run-client:
 .PHONY: run
 run:
 	@make -j 2 run-server run-client
+
+.PHONY: install-server
+install-server:
+	poetry install
+
+.PHONY: install-client
+install-client:
+	yarn install
+
+.PHONY: init-dotenv
+init-dotenv:
+	copy .env.example .env || cp .env.example .env
+
+.PHONY: install
+install:
+	@make init-dotenv
+	@make -j 2 install-server install-client

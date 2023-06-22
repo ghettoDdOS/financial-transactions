@@ -29,6 +29,7 @@ export interface STData {
   OKTMO?: string
   PaytReason?: string
   TaxPeriod?: string
+  Flat?: string
   DocNo?: string
   DocDate?: string
   TaxPaytKind?: string
@@ -63,6 +64,7 @@ export interface STData {
   RegType?: string
   UIN?: string
   TechCode?: string
+  date?: string
 }
 
 export enum STEncoding {

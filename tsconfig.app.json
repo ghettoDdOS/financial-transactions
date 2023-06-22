@@ -1,18 +1,9 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": [
-    "env.d.ts",
-    "html.d.ts",
-    "pinia.d.ts",
-    "components.d.ts",
-    "src/client/**/*",
-    "src/client/**/*.vue"
-  ],
-  "exclude": ["src/client/**/__tests__/*"],
+  "include": ["src/client/**/*", "src/client/**/*.vue"],
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
-    // "types": ["anu-vue/volar"],
     "paths": {
       "@/*": ["./src/client/*"]
     }

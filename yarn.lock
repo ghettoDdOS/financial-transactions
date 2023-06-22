@@ -23,10 +23,10 @@
   resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.7.4.tgz#b1c11b95f89f13842204d3d83de01e10bb9257db"
   integrity sha512-qe8Nmh9rYI/HIspLSTwtbMFPj6dISG6+dJnOguTlPNXtCvS2uezdxscVBb7/3DrmNbQK49TDqpkSQ1chbRGdpQ==
 
-"@anu-vue/preset-theme-default@^0.15.1":
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/@anu-vue/preset-theme-default/-/preset-theme-default-0.15.1.tgz#4eeed09de4ff52792c89efaeb67082b581aab8fe"
-  integrity sha512-ulwtrVlQrLoqaWLJMu32X+PFbF+WwGsHMMxstdEsTMMeg/zLIGCH7s+lCCcGcwfc9WZdg85zYSyDucl4NJbKdw==
+"@anu-vue/preset-theme-default@^0.15.2":
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/@anu-vue/preset-theme-default/-/preset-theme-default-0.15.2.tgz#7faa23ab197145c94cbfda231b1d73e64633ef2a"
+  integrity sha512-O1Ro85btYMgon23yXH8kMD/XDaRqwjC0ArDqvYeXYGZKcMS/KVwS0rQY5yd3SI/Vcx4/RwIqTu8346j4Jfw1Rw==
 
 "@babel/parser@^7.20.15", "@babel/parser@^7.21.3":
   version "7.22.5"
@@ -275,6 +275,11 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@kurkle/color@^0.3.0":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.2.tgz#5acd38242e8bde4f9986e7913c8fdf49d3aa199f"
+  integrity sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -329,6 +334,11 @@
   version "7.0.12"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.12.tgz#d70faba7039d5fca54c83c7dbab41051d2b6f6cb"
   integrity sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==
+
+"@types/lodash@^4.14.195":
+  version "4.14.195"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.195.tgz#bafc975b252eb6cea78882ce8a7b6bf22a6de632"
+  integrity sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==
 
 "@types/node@^18.16.17":
   version "18.16.18"
@@ -869,10 +879,10 @@ ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-anu-vue@^0.15.1:
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/anu-vue/-/anu-vue-0.15.1.tgz#adc37a48f7022c46f4888ef146cfb81c483e9187"
-  integrity sha512-c+TOseX08w5h/eTXiVukbcoGmw9a2CHMsYkdWQeug5/OIkt7TjzYbYe0XzkMDTuwNhTUVWjaqhVKP3L3VO7XrA==
+anu-vue@^0.15.2:
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/anu-vue/-/anu-vue-0.15.2.tgz#62af592fed534987ee09b93ba9cc2018ef789190"
+  integrity sha512-B4yEa9iiW73Z6O6Db3pObqHya+Za83EAavDc0ihcR++BgXeYBjepLQBfn8VAy8lH9L/mLUGJJ4gB2+KTyGiadQ==
   dependencies:
     "@floating-ui/vue" "^1.0.0"
     colord "^2.9.3"
@@ -996,6 +1006,13 @@ chalk@^4.0.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+chart.js@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-4.3.0.tgz#ac363030ab3fec572850d2d872956f32a46326a1"
+  integrity sha512-ynG0E79xGfMaV2xAHdbhwiPLczxnNNnasrmPEXriXsPJGjmhOBYzFVEsB65w2qMDz+CaBJJuJD0inE/ab/h36g==
+  dependencies:
+    "@kurkle/color" "^0.3.0"
 
 chokidar@^3.5.3:
   version "3.5.3"
@@ -2786,6 +2803,11 @@ vite@^4.3.9:
     rollup "^3.21.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vue-chartjs@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-5.2.0.tgz#3d0076ccf8016d1bf8fab5ccd837e7fb81005ded"
+  integrity sha512-d3zpKmGZr2OWHQ1xmxBcAn5ShTG917+/UCLaSpaCDDqT0U7DBsvFzTs69ZnHCgKoXT55GZDW8YEj9Av+dlONLA==
 
 vue-demi@>=0.13.0, vue-demi@>=0.14.0, vue-demi@>=0.14.5:
   version "0.14.5"
