@@ -3,8 +3,7 @@ import QrScanner from '@/components/QrScanner.vue'
 import { useTransactionsStore } from '@/stores/transactions'
 import type { STData } from '@/types/st'
 import { ST } from '@/utils/st'
-import { camelize, onMounted, ref } from 'vue'
-console.log(camelize('BankName'))
+import { onMounted, ref } from 'vue'
 
 const scanner = ref<typeof QrScanner>()
 const transactionsStore = useTransactionsStore()
@@ -14,7 +13,7 @@ const isDialogShown = ref(false)
 const currentQRData = ref<STData>()
 const operationsTypes = ref([
   {
-    name: 'asfsa',
+    name: 'Test',
     id: 1
   }
 ])

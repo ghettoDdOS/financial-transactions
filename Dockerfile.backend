@@ -1,0 +1,12 @@
+FROM python:3.11-alpine
+
+WORKDIR /app/
+
+COPY ./src/server /app/src/server
+COPY manage.py pyproject.toml poetry.lock /app/
+
+RUN pip install poetry
+
+RUN set -ex && poetry install
+
+COPY manage.py .

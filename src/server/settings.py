@@ -2,6 +2,7 @@
 Django settings for financial_transactions project.
 """
 
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -13,12 +14,27 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-($4!p^*7(wgz$gd-iy=gsf!r*iuj-l)-r#c55#y$iw+1=y(2($"
+SECRET_KEY = str(
+    os.getenv(
+        "DJANGO_SECRET_KEY",
+        "django-insecure-($4!p^*7(wgz$gd-iy=gsf!r*iuj-l)-r#c55#y$iw+1=y(2($",
+    )
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.getenv("DJANGO_DEBUG", True))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = list(
+    map(
+        lambda h: h.strip(),
+        str(
+            os.getenv(
+                "DJANGO_ALLOWED_HOSTS",
+                "*",
+            )
+        ).split(","),
+    )
+)
 
 
 # Application definition

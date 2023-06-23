@@ -1,0 +1,36 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    restart: "on-failure"
+    env_file:
+    - .env
+    expose:
+      - 8000
+    command: sh -c "
+      yarn serve"
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    restart: "always"
+    volumes:
+      - ./src/db.sqlite3:/app/src/db.sqlite3
+    expose:
+      - 8000
+    env_file:
+    - .env
+    command: sh -c "
+      poetry run python ./manage.py migrate &&
+      poetry run gunicorn -w 3 server.wsgi:application -b 0.0.0.0:8000"
+
+  proxy:
+    image: nginx:1.25-alpine
+    volumes:
+      - ./nginx.conf.template:/etc/nginx/templates/default.conf.template
+    ports:
+      - 3000:80
+    env_file:
+      - .env
