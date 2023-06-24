@@ -32,6 +32,6 @@ services:
       - ./nginx.conf.template:/etc/nginx/templates/default.conf.template
       - ./ssl:/etc/nginx/ssl
     ports:
-      - 3000:80
+      - 3000:443
     env_file:
       - .env
