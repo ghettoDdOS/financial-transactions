@@ -6,11 +6,17 @@ upstream express {
 }
 
 server {
-  listen 80;
+  listen 443 ssl default_server;
   charset utf-8;
 
   gzip on;
   gzip_types text/html application/javascript application/json text/css;
+
+  ssl_certificate /etc/nginx/ssl/cert.crt;
+  ssl_certificate_key /etc/nginx/ssl/private.key;
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers "HIGH:!RC4:!aNULL:!MD5:!kEDH";
+  add_header Strict-Transport-Security 'max-age=604800';
 
   location = /favicon.ico {
     access_log off;

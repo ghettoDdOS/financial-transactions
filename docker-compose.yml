@@ -30,6 +30,7 @@ services:
     image: nginx:1.25-alpine
     volumes:
       - ./nginx.conf.template:/etc/nginx/templates/default.conf.template
+      - ./ssl:/etc/nginx/ssl
     ports:
       - 3000:80
     env_file:
