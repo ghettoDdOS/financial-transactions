@@ -23,11 +23,29 @@ class TechCode(models.TextChoices):
     OTHER = "15", _("Прочие услуги")
 
 
+class PaymentCategory(models.Model):
+    name = models.CharField(verbose_name=_("Наименование категории"), max_length=150)
+
+    class Meta:
+        verbose_name = _("Категория платежа")
+        verbose_name_plural = _("Категории платежей")
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class PaymentReceipt(models.Model):
     user = models.ForeignKey(
         to=UserModel,
         verbose_name=_("Пользователь"),
         on_delete=models.CASCADE,
+    )
+    category = models.ForeignKey(
+        to=PaymentCategory,
+        verbose_name=_("Категория"),
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
 
     Name = models.CharField(

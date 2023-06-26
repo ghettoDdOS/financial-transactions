@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import QrScanner from '@/components/QrScanner.vue'
+import type { PaymentCategory } from '@/models/transactions'
+import transactionsServices from '@/services/transactions.services'
 import { useTransactionsStore } from '@/stores/transactions'
 import type { STData } from '@/types/st'
 import { ST } from '@/utils/st'
@@ -11,12 +13,7 @@ const selectedTypeLabel = ref()
 const selectedType = ref()
 const isDialogShown = ref(false)
 const currentQRData = ref<STData>()
-const operationsTypes = ref([
-  {
-    name: 'Test',
-    id: 1
-  }
-])
+const operationsTypes = ref<PaymentCategory[]>([])
 
 const parseSTPayload = (text: string) => {
   try {
@@ -35,10 +32,14 @@ const cancelScanQR = () => {
 }
 const saveQRData = async () => {
   isDialogShown.value = false
-  await transactionsStore.createPayment(currentQRData.value!)
+  await transactionsStore.createPayment(
+    { ...currentQRData.value, category: selectedType.value.id }!
+  )
   currentQRData.value = undefined
 }
 onMounted(async () => {
+  const { data } = await transactionsServices.getCategoriesList()
+  operationsTypes.value = data
   await transactionsStore.fetchPaymentsList()
 })
 </script>
@@ -70,7 +71,7 @@ onMounted(async () => {
       </div>
       <div mt-4>
         <ATypography title="История" />
-        <div flex space-y-3>
+        <div flex flex-col space-y-3>
           <div
             v-for="transaction in transactionsStore.payments"
             :key="transaction.id"
@@ -80,6 +81,7 @@ onMounted(async () => {
             flex
             justify-between
             w-full
+            @click="$router.push(`payment/${transaction.id}`)"
           >
             <div>{{ transaction.Name }}</div>
             <div flex>
@@ -112,6 +114,22 @@ onMounted(async () => {
         <QrScanner ref="scanner" @decode="parseSTPayload" />
       </div>
       <div v-if="currentQRData" pa-4>
+        <ASelect v-model="selectedTypeLabel" w-full placeholder="Тип">
+          <template #default="{ handleListItemClick }">
+            <AListItem
+              v-for="operationType in operationsTypes"
+              :key="operationType.id"
+              @click="
+                () => {
+                  handleListItemClick(operationType.name)
+                  selectedType = operationType
+                }
+              "
+            >
+              <span>{{ operationType.name }}</span>
+            </AListItem>
+          </template>
+        </ASelect>
         <div><strong>Наименование:</strong> {{ currentQRData.Name }}</div>
         <div><strong>Банк:</strong> {{ currentQRData.BankName }}</div>
         <div v-if="currentQRData.PayerAddress">

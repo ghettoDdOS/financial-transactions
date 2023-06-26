@@ -19,6 +19,16 @@ const router = createRouter({
           path: 'charts',
           name: 'charts',
           component: () => import('@/views/ChartsView.vue')
+        },
+        {
+          path: 'statistics',
+          name: 'statistics',
+          component: () => import('@/views/StatisticsView.vue')
+        },
+        {
+          path: 'payment/:id',
+          name: 'payment',
+          component: () => import('@/views/DetailView.vue')
         }
       ]
     },

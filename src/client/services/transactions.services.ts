@@ -1,5 +1,5 @@
+import type { Payment, PaymentCategory } from '@/models/transactions'
 import type { STData } from '@/types/st'
-import type { Payment } from '@/models/transactions'
 
 import { api } from '@/plugins/axios'
 
@@ -17,5 +17,8 @@ export default {
   },
   deletePayment(id: number) {
     return api.delete(`${this._endpoint}payment/${id}/`)
+  },
+  getCategoriesList() {
+    return api.get<PaymentCategory[]>(`${this._endpoint}category/`)
   }
 }
